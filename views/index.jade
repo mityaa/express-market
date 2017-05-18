@@ -1,5 +1,13 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+html
+include ./menu
+head
+link(rel='stylesheet', href='/stylesheets/loginForm.css')
+body
+    - var images = title;
+    div(class="textArea" id="text")
+    h1 Магазин
+      div(class="wrapper")
+        div(class="gallery")
+        - title.forEach(function (img) {
+          img(src="static/img/gallery/" + img)
+        - });
