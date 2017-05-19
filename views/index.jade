@@ -1,13 +1,14 @@
 html
-include ./menu
+# include ./menu
 head
 link(rel='stylesheet', href='/stylesheets/loginForm.css')
 body
     - var images = title;
-    div(class="textArea" id="text")
     h1 Магазин
-      div(class="wrapper")
-        div(class="gallery")
-        - title.forEach(function (img) {
-          img(src="static/img/gallery/" + img)
+
+
+        div(class="grid")
+        - title.forEach(function (img, index) {
+          input(type="checkbox" id="pic-"+index)
+          img(src="static/img/gallery/"+img)
         - });

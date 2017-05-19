@@ -312,3 +312,218 @@ h4 {
     box-shadow: 0 0 10px rgba(0,0,0,.5);
     background: #FFF;
     }
+
+
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+	
+* {
+ box-sizing: border-box;
+}
+ 
+label[for] {
+ cursor: pointer;
+}
+ 
+input[type="checkbox"] {
+ display: none;
+}
+ 
+body {
+ background-color: #000;
+}
+ 
+.lightbox, .grid {
+ width: 100%;
+ position: fixed;
+ top: 0;
+ left: 0;
+}
+ 
+.lightbox {
+ z-index: 1;
+ min-height: 100%;
+ overflow: auto;
+ -webkit-transform: scale(0);
+ -ms-transform: scale(0);
+ transform: scale(0);
+ -webkit-transition: -webkit-transform .5s ease-out;
+ transition: transform .5s ease-out;
+}
+.lightbox img {
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ max-width: 96%;
+ max-height: 96%;
+ -webkit-transform: translate(-50%, -50%);
+ -ms-transform: translate(-50%, -50%);
+ transform: translate(-50%, -50%);
+ box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+ 
+input[type="checkbox"]:checked + .lightbox {
+ -webkit-transform: scale(1);
+ -ms-transform: scale(1);
+ transform: scale(1);
+}
+ 
+input[type="checkbox"]:checked ~ .grid {
+ opacity: .125;
+}
+ 
+.grid {
+ display: -webkit-box;
+ display: -webkit-flex;
+ display: -ms-flexbox;
+ display: flex;
+ -webkit-flex-wrap: wrap;
+ -ms-flex-wrap: wrap;
+ flex-wrap: wrap;
+ -webkit-box-align: start;
+ -webkit-align-items: flex-start;
+ -ms-flex-align: start;
+ align-items: flex-start;
+ -webkit-align-content: flex-start;
+ -ms-flex-line-pack: start;
+ align-content: flex-start;
+ z-index: 0;
+ height: 100%;
+ padding: 16px;
+ overflow: auto;
+ background-color: #222;
+ text-align: center;
+ -webkit-transition: opacity .75s;
+ transition: opacity .75s;
+}
+.grid .grid-item {
+ display: inline-block;
+ width: 25%;
+ padding: 16px;
+ opacity: .75;
+ -webkit-transition: opacity .5s;
+ transition: opacity .5s;
+}
+.grid .grid-item:hover {
+ opacity: 1;
+}
+@media screen and (max-width: 1024px) {
+ .grid .grid-item {
+ width: 50%;
+ }
+}
+@media screen and (max-width: 480px) {
+ .grid .grid-item {
+ width: 100%;
+ }
+}
+.grid img {
+ max-width: 100%;
+ max-height: 100%;
+ box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
