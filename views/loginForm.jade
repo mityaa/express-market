@@ -3,7 +3,7 @@ include ./menu
 head
 link(rel='stylesheet', href='/stylesheets/loginForm.css')
 body
-  form(method="post", action="", class="login")
+  form(id="loginForm",method="post", action="", class="login")
     p
       label(for="login")Логин
       input(type="text", name="login", id="login", value="name@example.com")
@@ -12,6 +12,21 @@ body
       input(type="password", name="password", id="password", value="4815162342")
     p(class="login-submit")
       button(type="submit", class="login-button")Войти
+    p(class="registration") 
+        a(onclick="document.getElementById('registrForm').removeAttribute('hidden');document.getElementById('loginForm').setAttribute('hidden', 'true');")Зарегистрироваться
     p(class="forgot-password") 
         a(href="index.html")Забыл пароль?
+
+   form(id="registrForm", class="login" method="post", action="", hidden="hidden")
+    p
+      label(for="login")Логин
+      input(type="text", name="login", id="login", value="")
+    p
+      label(for="password")Пароль:
+      input(type="password", name="password", id="password", value="4815162342")
+    p
+      label(for="email")Почта
+      input(type="text", name="email", id="email", value="name@example.com")
+    p(class="login-submit")
+      button(type="submit", class="login-button")Регистрация
                 
