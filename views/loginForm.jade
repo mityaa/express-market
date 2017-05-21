@@ -3,7 +3,7 @@ include ./menu
 head
 link(rel='stylesheet', href='/stylesheets/loginForm.css')
 body
-  form(id="loginForm",method="post", action="", class="login")
+  form(id="loginForm", class="login")
     p
       label(for="login")Логин
       input(type="text", name="login", id="login", value="name@example.com")
@@ -17,16 +17,26 @@ body
     p(class="forgot-password") 
         a(href="index.html")Забыл пароль?
 
-   form(id="registrForm", class="login" method="post", action="", hidden="hidden")
+   form(id="registrForm", class="login" hidden="hidden", method="get", action="/registrationUser")
     p
       label(for="login")Логин
-      input(type="text", name="login", id="login", value="")
+      input(type="text", name="login", id="registr_login", value="vasya_pupkin")
     p
       label(for="password")Пароль:
-      input(type="password", name="password", id="password", value="4815162342")
+      input(type="password", name="password", id="registr_password", value="4815162342")
     p
       label(for="email")Почта
-      input(type="text", name="email", id="email", value="name@example.com")
+      input(type="text", name="email", id="registr_email", value="name@example.com")
     p(class="login-submit")
-      button(type="submit", class="login-button")Регистрация
-                
+      button(type="submit", class="login-button", id="registr-button")Регистрация
+
+script.
+ $(document).ready(function () {
+     $("#registr-button").click(function () {
+         var obj = {};
+         obj.login = $("registr_login").value;
+         obj.password = $("registr_password").value;
+         obj.email = $("registr_email").value;
+         $.post('/registerUser', obj);
+         });
+     });
