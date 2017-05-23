@@ -60,4 +60,21 @@ module.exports = function (usr, pass) {
         });
         con.end();
     };
+
+    this.checkUser = function (login, password) {
+        var selected;
+        var query = `SELECT * FROM users WHERE login='${login}' AND password='${password}'`;
+        var con = this.getConnection('market');
+        return new Promise(function (resolve, reject) {
+            con.query(query, function (err, result) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                    con.end();
+                }
+            });
+        });
+    };
+
 };

@@ -3,7 +3,7 @@ include ./menu
 head
 link(rel='stylesheet', href='/stylesheets/loginForm.css')
 body
-  form(id="loginForm", class="login")
+  form(id="loginForm", class="login", method="get", action="/logIn")
     p
       label(for="login")Логин
       input(type="text", name="login", id="login", value="name@example.com")

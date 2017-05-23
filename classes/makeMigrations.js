@@ -6,4 +6,5 @@ var connect = new sql('root', '123456');
 //         connect.createTables();
 //     }, (err) = {
 //     });
-connect.insertUsers('cdewvc', 'cdsvc', 'cvwdv');
+// connect.insertUsers('cdewvc', 'cdsvc', 'cvwdv');
+// connect.checkUser('mitya', 'mkitya');
