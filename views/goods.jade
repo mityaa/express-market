@@ -1,0 +1,30 @@
+html
+head
+include ./menu
+link(rel='stylesheet', href='/stylesheets/goods.css')
+body
+div(class="wrapper")
+    header
+        div(class="layout-buttons")
+            span(class="active icon icon-list")
+            span(class="icon icon-table")
+        h1.
+        span(class="icon icon-clover")
+        Список товаров
+        nav 
+            a(href="http://localhost:3000")Главная
+            a(href="http://localhost:3000")Главная
+    ul(class="products clearfix")
+    - path.forEach(function(img) {
+        li(class="product-wrapper")
+            a(href="", class="product")
+                div(class="product-photo")
+                    img(src="static/img/gallery/"+img, alt="")
+                div(class="product-details-wrap")
+                    div(class="product-details")
+                    div(class="product-buttons-wrap")
+                        div(class="buttons")
+                            span(class="button to-cart")
+                                span(class="icon icon-cart")В корзину
+                            span(class="button")Купить
+    - });

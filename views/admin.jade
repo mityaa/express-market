@@ -1,0 +1,8 @@
+html
+head
+body
+    form(method="post", action="/goodLoad", enctype="multipart/form-data")
+        p Добавление фотографий в админку
+        br
+        input(type="file", name="photo", multiple accept="image/*,image/jpeg")
+        input(type="submit", value="Добавить товар")

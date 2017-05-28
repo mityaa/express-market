@@ -39,16 +39,23 @@ module.exports = function (usr, pass) {
     this.createTables = function () {
         var con = this.getConnection('market');
         var sqlUsers = "CREATE TABLE users (id VARCHAR(255), login VARCHAR(255), password VARCHAR(255), email VARCHAR(255))";
-        con.query(sqlUsers, function (err, result) {
-            if (err) throw err;
-            console.log("Table created");
+        var sqlGoods = "CREATE TABLE goods (id VARCHAR(255), name VARCHAR(255), price INT)";
+        return new Promise(function (resolve, reject) {
+            con.query(sqlUsers, function (err, result) {
+                if (err) reject(err);
+                console.log("Table users created");
+            });
+            con.query(sqlGoods, function (err, result) {
+                if (err) reject(err);
+                console.log("Table goods created");
+            });
+            resolve();
+            con.end();
         });
-        con.end();
     };
 
     this.insertUsers = function (login, password, email) {
         var id = guid.create();
-        console.log(id.toString());
         var query = `INSERT INTO users (id, login, password, email) VALUES ('${id}','${login}','${password}','${email}')`;
         var con = this.getConnection('market');
         con.query(query, function (err, result) {
@@ -73,6 +80,24 @@ module.exports = function (usr, pass) {
                     resolve(result);
                     con.end();
                 }
+            });
+        });
+    };
+
+    this.getGoodsAndInsertInDb = function () {
+        var con = this.getConnection('market');
+        fs.readdir('./public/img/gallery', function (err, items) {
+            console.log(items);
+            items.forEach(function (item, index) {
+                var id = guid.create();
+                var sql = `INSERT INTO goods (id, name, price) VALUES ('${id}', '${item}', 0)`;
+                con.query(sql, function (err, result) {
+                    if (err) {
+                        throw err;
+                    } else {
+                        console.log('successfull ' + index + 'insertig good');
+                    }
+                });
             });
         });
     };
