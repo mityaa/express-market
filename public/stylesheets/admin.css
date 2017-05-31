@@ -46,3 +46,15 @@ input[type=text]:focus, input[type=password]:focus, textarea {
   background: rgba(0, 0, 0, 0.1);
   outline: 0;
 }
+
+    .img {
+        text-align: justify;
+        -moz-text-align-last: justify;
+        text-align-last: justify;
+        padding: 5px;
+    }
+    .img img {
+        width: 200px;
+        height: 200px;
+        margin: 5px;
+    }

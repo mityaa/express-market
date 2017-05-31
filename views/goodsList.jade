@@ -4,3 +4,11 @@ head
 meta(charset='utf-8')
 link(rel='stylesheet', href='/stylesheets/admin.css')
 body
+    div(class='img')
+        - path.forEach(function (sqlItem) {
+              img(id=sqlItem.id, src="static/img/gallery/"+sqlItem.photoPath, onclick="getFrame(this);")
+        - });
+script.
+    var getFrame = function(element){
+        var id = element.id;
+    }

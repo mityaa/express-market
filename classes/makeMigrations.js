@@ -11,7 +11,7 @@ var connect = new sql('root', '123456');
 // connect.insertUsers('cdewvc', 'cdsvc', 'cvwdv');
 // connect.checkUser('mitya', 'mkitya');
 // connect.getGoodsAndInsertInDb();
-connect.selectGoods()
-    .then(function (result) {
-        console.log(result);
-    });
+// connect.selectGoods()
+//     .then(function (result) {
+//         console.log(result);
+//     });

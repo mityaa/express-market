@@ -20,6 +20,7 @@ var goods = require('./routes/goodsPage');
 var admin = require('./routes/admin');
 var goodLoad = require('./routes/addGood');
 var test = require('./routes/test');
+var redactionGoods = require('./routes/redactionGoods');
 //end routes 
 
 // view engine setup
@@ -39,6 +40,7 @@ app.use('/logIn', logIn);
 app.use('/getGoods', goods);
 app.use('/getAdmin', admin);
 app.use('/goodLoad', goodLoad);
+app.use('/redactGoods', redactionGoods);
 
 // catch 404 and forwarding to error handler
 app.use(function (req, res, next) {
