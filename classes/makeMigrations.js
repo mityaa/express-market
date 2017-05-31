@@ -8,6 +8,6 @@ var connect = new sql('root', '123456');
 //             });
 //     }, (err) = {
 //     });
-                connect.insertUsers('cdewvc', 'cdsvc', 'cvwdv');
-                connect.checkUser('mitya', 'mkitya');
-                connect.getGoodsAndInsertInDb();
+                // connect.insertUsers('cdewvc', 'cdsvc', 'cvwdv');
+                // connect.checkUser('mitya', 'mkitya');
+                // connect.getGoodsAndInsertInDb();

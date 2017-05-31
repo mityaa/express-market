@@ -39,7 +39,7 @@ module.exports = function (usr, pass) {
     this.createTables = function () {
         var con = this.getConnection('market');
         var sqlUsers = "CREATE TABLE users (id VARCHAR(255), login VARCHAR(255), password VARCHAR(255), email VARCHAR(255))";
-        var sqlGoods = "CREATE TABLE goods (id VARCHAR(255), name VARCHAR(255), price INT)";
+        var sqlGoods = "CREATE TABLE goods (id VARCHAR(255), name VARCHAR(255), price VARCHAR(255), goodData VARCHAR(255), photoPath VARCHAR(255))";
         return new Promise(function (resolve, reject) {
             con.query(sqlUsers, function (err, result) {
                 if (err) reject(err);
@@ -84,22 +84,18 @@ module.exports = function (usr, pass) {
         });
     };
 
-    this.getGoodsAndInsertInDb = function () {
+    this.addGood = function (reqObj) {
+        var id = guid.create();
+        var query = `INSERT INTO goods (id, name, price, goodData, photoPath) VALUES ('${id}','${reqObj.body.name}','${reqObj.body.price}','${reqObj.body.goodData}','${typeof reqObj.body.photo}')`;
         var con = this.getConnection('market');
-        fs.readdir('./public/img/gallery', function (err, items) {
-            console.log(items);
-            items.forEach(function (item, index) {
-                var id = guid.create();
-                var sql = `INSERT INTO goods (id, name, price) VALUES ('${id}', '${item}', 0)`;
-                con.query(sql, function (err, result) {
-                    if (err) {
-                        throw err;
-                    } else {
-                        console.log('successfull ' + index + 'insertig good');
-                    }
-                });
-            });
+        con.query(query, function (err, result) {
+            if (err) {
+                throw err;
+            } else {
+                console.log('query is ok');
+            }
         });
+        con.end();
     };
 
 };
