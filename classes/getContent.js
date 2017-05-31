@@ -25,7 +25,7 @@ module.exports = function (usr, pass) {
     this.createDatabase = function () {
         var con = this.getConnection();
         return new Promise(function (resolve, reject) {
-            con.query("CREATE DATABASE market", function (err, result) {
+            con.query("CREATE DATABASE `market` CHARACTER SET utf8 COLLATE utf8_general_ci", function (err, result) {
                 if (err) {
                     reject(err);
                 } else {
@@ -86,7 +86,7 @@ module.exports = function (usr, pass) {
 
     this.addGood = function (reqObj) {
         var id = guid.create();
-        var query = `INSERT INTO goods (id, name, price, goodData, photoPath) VALUES ('${id}','${reqObj.body.name}','${reqObj.body.price}','${reqObj.body.goodData}','${typeof reqObj.body.photo}')`;
+        var query = `INSERT INTO goods (id, name, price, goodData, photoPath) VALUES ('${id}','${reqObj.body.name}','${reqObj.body.price}','${reqObj.body.goodData}','${reqObj.files.photo.name}')`;
         var con = this.getConnection('market');
         con.query(query, function (err, result) {
             if (err) {
@@ -96,6 +96,21 @@ module.exports = function (usr, pass) {
             }
         });
         con.end();
+    };
+
+    this.selectGoods = function () {
+        var query = `SELECT * FROM goods`;
+        var con = this.getConnection('market');
+        return new Promise(function (resolve, reject) {
+            con.query(query, function (err, result) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                    con.end();
+                }
+            });
+        });
     };
 
 };
