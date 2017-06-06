@@ -6,9 +6,28 @@ link(rel='stylesheet', href='/stylesheets/admin.css')
 body
     div(class='img')
         - path.forEach(function (sqlItem) {
-              img(id=sqlItem.id, src="static/img/gallery/"+sqlItem.photoPath, onclick="getFrame(this);")
+              img(id=sqlItem.id, gName=sqlItem.name, gData=sqlItem.goodData, price=sqlItem.price,src="static/img/gallery/"+sqlItem.photoPath, onclick="getFrame(this);")
         - });
-script.
+     form(id='redactForm', method="post", hidden="true")
+        p Редактитрованите товара
+        br
+        Название товара
+        label(type="text", name="name", id="gName", value="sB")
+        br
+        Цена
+        input(type="text", name="price", id="gPrice")
+        br
+        Описание товара
+        br
+        textarea(type="text", name="goodData", id="gData")
+        br
+        input(type="file", name="photo", multiple accept="image/*,image/jpeg", id="gPhoto")
+        br
+        input(type="submit", value="Добавить товар")
+
+ script.
     var getFrame = function(element){
         var id = element.id;
+        document.getElementById('redactForm').removeAttribute('hidden');
+        var elem = document.getElementById('redactForm').getElementsByClassName('gName')
     }
